@@ -1,0 +1,123 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @unique @default(cuid())
+  firstname String
+  lastname  String
+  email     String    @unique
+  Cart      Cart[]
+  createdAt DateTime  @default(now())
+  Orders    Orders[]
+  Reviews   Reviews[]
+}
+
+model Cart {
+  id          String        @unique @default(cuid())
+  user        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String
+  createdAt   DateTime      @default(now())
+  CartProduct CartProduct[]
+}
+
+model Product {
+  id                 String               @unique @default(cuid())
+  barcodeValue       String               @unique
+  name               String
+  stock              Int
+  category           String
+  type               String
+  details            String
+  description        String
+  size               String
+  ClothProduct       ClothProduct[]
+  Reviews            Reviews[]
+  createdAt          DateTime             @default(now())
+  GroceryProduct     GroceryProduct[]
+  ElectronicsProduct ElectronicsProduct[]
+  AccessoriesProduct AccessoriesProduct[]
+  ProductHistory     ProductHistory[]
+  OrderProduct       OrderProduct[]
+  CartProduct        CartProduct[]
+}
+
+model ClothProduct {
+  id        String  @unique @default(cuid())
+  humanType String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId String
+}
+
+model GroceryProduct {
+  id         String   @unique @default(cuid())
+  expiryDate DateTime
+  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId  String
+}
+
+model ElectronicsProduct {
+  id         String  @unique @default(cuid())
+  efficiency String
+  product    Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId  String
+}
+
+model AccessoriesProduct {
+  id        String  @unique @default(cuid())
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId String
+}
+
+model Orders {
+  id           String         @unique @default(cuid())
+  user         User           @relation(fields: [userId], references: [id])
+  userId       String
+  totalPrice   Int
+  OrderProduct OrderProduct[]
+}
+
+model ProductHistory {
+  id        String   @unique @default(cuid())
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId String
+  createdAt DateTime @default(now())
+}
+
+model Reviews {
+  id        String  @unique @default(cuid())
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productId String
+  userId    String
+  content   String
+}
+
+model OrderProduct {
+  ordersId  String
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  order     Orders  @relation(fields: [ordersId], references: [id], onDelete: Cascade)
+
+  @@id([ordersId, productId])
+}
+
+model CartProduct {
+  cart      Cart    @relation(fields: [cartId], references: [id])
+  product   Product @relation(fields: [productId], references: [id])
+  cartId    String
+  productId String
+
+  @@id([cartId, productId])
+}
