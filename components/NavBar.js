@@ -1,5 +1,5 @@
 "use client";
-import { logout } from "@/app/actions/auth/actions";
+import { signOut } from "next-auth/react";
 import { AccountCircle, ShoppingCart } from "@mui/icons-material";
 import { AppBar, IconButton, Menu, MenuItem, Toolbar } from "@mui/material";
 import Link from "next/link";
@@ -36,9 +36,9 @@ export default function NavBar({ auth }) {
               onClose={handleClose}
             >
               <MenuItem
-                onClick={async () => {
+                onClick={() => {
                   handleClose();
-                  await logout();
+                  signOut();
                 }}
               >
                 Logout

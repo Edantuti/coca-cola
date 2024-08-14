@@ -1,7 +1,8 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { getUser } from "./actions/auth/actions";
 import NavBar from "@/components/NavBar";
+import { getServerAuthSession } from "@/auth";
+import { AuthProvider } from "@/components/Provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,11 +12,13 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const { session } = await getUser();
+  const session = await getServerAuthSession();
   return (
     <html lang="en">
-      <body className={inter.className}><NavBar auth={session !== null} />{children}</body>
-
+      <body className={inter.className}>
+        <NavBar auth={session !== null} />
+        <AuthProvider>{children}</AuthProvider>
+      </body>
     </html>
   );
 }
