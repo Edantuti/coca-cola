@@ -11,7 +11,9 @@ async function GET(req, res) {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "strict",
+    path:'/'
   });
+  
   const url = await google.createAuthorizationURL(state, codeVerifier, {
     scopes: ["profile", "email"],
   });

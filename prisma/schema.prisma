@@ -11,6 +11,7 @@ model User {
   id        String     @unique @default(cuid())
   name      String
   photo     String
+  staff     Boolean    @default(false)
   email     String     @unique
   session   Session[]
   Cart      Cart[]
@@ -47,19 +48,18 @@ model Cart {
 
 model Product {
   id                 String               @unique @default(cuid())
-  barcodeValue       String               @unique
   name               String
+  image              String
   stock              Int
+  price              Int
   category           String
-  type               String
-  details            String
+  details            String[]
   description        String
   size               String
   ClothProduct       ClothProduct[]
   Reviews            Reviews[]
   createdAt          DateTime             @default(now())
   GroceryProduct     GroceryProduct[]
-  ElectronicsProduct ElectronicsProduct[]
   AccessoriesProduct AccessoriesProduct[]
   ProductHistory     ProductHistory[]
   OrderProduct       OrderProduct[]
@@ -78,13 +78,6 @@ model GroceryProduct {
   id         String   @unique @default(cuid())
   expiryDate DateTime
   product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
-  productId  String
-}
-
-model ElectronicsProduct {
-  id         String  @unique @default(cuid())
-  efficiency String
-  product    Product @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId  String
 }
 

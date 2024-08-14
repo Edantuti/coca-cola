@@ -1,5 +1,5 @@
 import { parseCookies } from "oslo/cookie";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { google, lucia } from "@/auth";
 import { generateId } from "lucia";
 import { cookies } from "next/headers";
@@ -12,6 +12,7 @@ async function GET(req, res) {
   const state = url.searchParams.get("state");
   const code = url.searchParams.get("code");
   const codeVerifier = cookies().get("codeVerifier");
+  
 
   if (!state || !stateCookie || !code || stateCookie !== state) {
     return NextResponse.json(null, { status: 400 });
@@ -21,6 +22,7 @@ async function GET(req, res) {
       code,
       codeVerifier.value,
     );
+    
     const userResponse = await fetch(
       "https://openidconnect.googleapis.com/v1/userinfo",
       {
@@ -29,7 +31,9 @@ async function GET(req, res) {
         },
       },
     );
+    
     const googleUser = await userResponse.json();
+    
     let existingUser = await db.user.findUnique({
       where: {
         email: googleUser.email,
@@ -42,7 +46,6 @@ async function GET(req, res) {
           id: generateId(15),
           name: googleUser.name,
           email: googleUser.email,
-          email_verified: googleUser.email_verified,
           photo: googleUser.picture,
         },
       });

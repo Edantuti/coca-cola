@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
 import SubmitButton from "@/components/submitButton";
+import { redirect } from "next/navigation";
 
 export default function Login() {
   return (
@@ -10,7 +11,7 @@ export default function Login() {
         <form
           action={async () => {
             "use server";
-            await redirect("/api/auth/google");
+            redirect("/api/auth/google");
           }}
         >
           <SubmitButton className="w-80 mx-auto flex gap-2">
