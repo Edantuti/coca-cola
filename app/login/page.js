@@ -12,6 +12,7 @@ export default function Login() {
         <h2 className="text-center my-10 text-xl">Login</h2>
 
         <Button
+          variant="contained"
           className="w-80 mx-auto flex gap-2"
           onClick={() => signIn("google")}
         >

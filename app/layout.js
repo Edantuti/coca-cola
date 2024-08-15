@@ -3,6 +3,7 @@ import "./globals.css";
 import NavBar from "@/components/NavBar";
 import { getServerAuthSession } from "@/auth";
 import { AuthProvider } from "@/components/Provider";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,7 @@ export default async function RootLayout({ children }) {
       <body className={inter.className}>
         <NavBar auth={session !== null} />
         <AuthProvider>{children}</AuthProvider>
+        <Toaster position="top-left" />
       </body>
     </html>
   );

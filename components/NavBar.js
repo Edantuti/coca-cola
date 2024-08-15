@@ -18,7 +18,7 @@ export default function NavBar({ auth }) {
   return (
     <AppBar position="static">
       <Toolbar className="flex justify-between">
-        <h6 className="text-xl">Project Name</h6>
+        <h6 className="text-xl">Wal Cart</h6>
         {auth ? (
           <div>
             <Link href="/cart">

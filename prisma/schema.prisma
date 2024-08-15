@@ -26,19 +26,19 @@ model Account {
 }
 
 model User {
-  id            String     @unique @default(cuid())
+  id            String     @id @default(cuid())
   name          String
-  image         String?
   staff         Boolean    @default(false)
   email         String     @unique
+  createdAt     DateTime   @default(now())
+  image         String?
   emailVerified DateTime?
-  sessions      Session[]
+  accounts      Account[]
   Cart          Cart[]
   Orders        Orders[]
   Reviews       Reviews[]
+  sessions      Session[]
   Wishlist      Wishlist[]
-  createdAt     DateTime   @default(now())
-  accounts      Account[]
 }
 
 model Session {
@@ -57,104 +57,101 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-model Cart {
-  id          String        @unique @default(cuid())
-  user        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId      String
-  createdAt   DateTime      @default(now())
-  CartProduct CartProduct[]
-}
-
 model Product {
-  id                 String               @unique @default(cuid())
-  name               String
-  image              String
-  stock              Int
-  price              Int
-  category           String
-  details            String[]
-  description        String
-  size               String
-  ClothProduct       ClothProduct[]
-  Reviews            Reviews[]
-  createdAt          DateTime             @default(now())
-  GroceryProduct     GroceryProduct[]
-  AccessoriesProduct AccessoriesProduct[]
-  ProductHistory     ProductHistory[]
-  OrderProduct       OrderProduct[]
-  CartProduct        CartProduct[]
-  Wishlist           Wishlist[]
+  id             String           @id @default(cuid())
+  name           String
+  image          String
+  stock          Int
+  price          Int
+  category       String
+  details        String[]
+  description    String
+  size           String
+  createdAt      DateTime         @default(now())
+  ClothProduct   ClothProduct[]
+  GroceryProduct GroceryProduct[]
+  OrderProduct   OrderProduct[]
+  ProductHistory ProductHistory[]
+  Reviews        Reviews[]
+  Wishlist       Wishlist[]
+  Cart           Cart[]
 }
 
 model ClothProduct {
-  id        String  @unique @default(cuid())
   humanType String
-  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@id([productId])
 }
 
 model GroceryProduct {
-  id         String   @unique @default(cuid())
   expiryDate DateTime
-  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId  String
-}
+  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
 
-model AccessoriesProduct {
-  id        String  @unique @default(cuid())
-  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
-  productId String
+  @@id([productId])
 }
 
 model Orders {
-  id           String         @unique @default(cuid())
-  user         User           @relation(fields: [userId], references: [id])
+  id           String         @id @default(cuid())
   userId       String
   totalPrice   Int
   OrderProduct OrderProduct[]
+  user         User           @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model ProductHistory {
-  id        String   @unique @default(cuid())
-  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId String
   createdAt DateTime @default(now())
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@id([productId])
 }
 
 model Reviews {
-  id        String  @unique @default(cuid())
-  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
-  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   productId String
   userId    String
   content   String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([productId, userId])
 }
 
 model OrderProduct {
   ordersId  String
   productId String
-  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
-  order     Orders  @relation(fields: [ordersId], references: [id], onDelete: Cascade)
   quantity  Int
+  order     Orders  @relation(fields: [ordersId], references: [id], onDelete: Cascade)
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 
   @@id([ordersId, productId])
 }
 
-model CartProduct {
-  cart      Cart    @relation(fields: [cartId], references: [id])
-  product   Product @relation(fields: [productId], references: [id])
-  cartId    String
+model Cart {
+  userId    String
   productId String
   quantity  Int
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 
-  @@id([cartId, productId])
+  @@id([userId, productId])
+}
+
+model Payment {
+  razorpay_payment_id String
+  razorpay_order_id   String
+  razorpay_signature  String
+
+  @@id([razorpay_order_id, razorpay_signature, razorpay_payment_id])
 }
 
 model Wishlist {
-  user      User    @relation(fields: [userId], references: [id])
-  product   Product @relation(fields: [productId], references: [id])
   productId String
   userId    String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@id([productId, userId])
 }

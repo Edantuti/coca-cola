@@ -10,9 +10,9 @@ export function ReviewForm({ productId: id }) {
   }
   return (
     <Box component="form" noValidate autoComplete="off" onSubmit={handleSubmit}>
-      ``
       <Typography variant="caption">Create a new Review</Typography>
       <TextField
+        className="w-full"
         onChange={(e) => setContent(e.target.value)}
         label="Review"
         variant="outlined"
