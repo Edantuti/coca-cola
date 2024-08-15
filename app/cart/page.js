@@ -1,269 +1,3 @@
-// 'use client'
-// import { Button, Card, Container, Typography } from "@mui/material";
-// import Checkbox from '@mui/material/Checkbox';
-
-// const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-// import Image from "next/image";
-// import * as React from 'react';
-// import { Unstable_NumberInput as BaseNumberInput } from '@mui/base/Unstable_NumberInput';
-// import { styled } from '@mui/system';
-// import RemoveIcon from '@mui/icons-material/Remove';
-// import AddIcon from '@mui/icons-material/Add';
-
-// const NumberInput = React.forwardRef(function CustomNumberInput(props, ref) {
-//   return (
-//     <BaseNumberInput
-//       slots={{
-//         root: StyledInputRoot,
-//         input: StyledInput,
-//         incrementButton: StyledButton,
-//         decrementButton: StyledButton,
-//       }}
-//       slotProps={{
-//         incrementButton: {
-//           children: <AddIcon fontSize="small" />,
-//           className: 'increment',
-//         },
-//         decrementButton: {
-//           children: <RemoveIcon fontSize="small" />,
-//         },
-//       }}
-//       {...props}
-//       ref={ref}
-//     />
-//   );
-// });
-
-
-// export default function Page() {
-//   return (
-//     <Container className=" flex flex-col gap-5 lg:w-75 w-78 mt-5">
-//       <div>
-//         <Button variant="contained" className="rounded-3xl text-black w-full bg-yellow-300">Proceed to buy</Button>
-//       </div>
-//       <Card className="p-4 flex flex-col gap-3">
-//         <div className="flex gap-3">
-//         <Image
-//           src={"https://dummyimage.com/600x400/000/fff.png"}
-//           alt=""
-//           width="200"
-//           height="300"
-//           className="w-20 rounded"
-//         />
-//         <div className="flex flex-col">
-//         <Typography variant="h6">Product Name</Typography>
-//         <Typography variant="body1">Description</Typography>
-//         <Typography variant="subtitle2">Price</Typography>
-//         </div>
-//         </div>
-//         <div className="flex justify-between">
-//         <NumberInput aria-label="Quantity Input" min={1} max={99}
-//          />
-//          <Button variant="outlined" className="bg-transparent text-black rounded-full">Remove from Cart</Button>
-//         </div>
-//       </Card>
-//       <Card className="p-4 flex flex-col gap-3">
-//         <div className="flex gap-3">
-//         <Image
-//           src={"https://dummyimage.com/600x400/000/fff.png"}
-//           alt=""
-//           width="200"
-//           height="300"
-//           className="w-20 rounded"
-//         />
-//         <div className="flex flex-col">
-//         <Typography variant="h6">Product Name</Typography>
-//         <Typography variant="body1">Description</Typography>
-//         <Typography variant="subtitle2">Price</Typography>
-//         </div>
-//         </div>
-//         <div className="flex justify-between">
-//         <NumberInput aria-label="Quantity Input" min={1} max={99}
-//          />
-//          <Button variant="outlined" className="bg-transparent text-black rounded-full">Remove from Cart</Button>
-//         </div>
-//       </Card>
-//       <Card className="p-4 flex flex-col gap-3">
-//         <div className="flex gap-3">
-//         <Image
-//           src={"https://dummyimage.com/600x400/000/fff.png"}
-//           alt=""
-//           width="200"
-//           height="300"
-//           className="w-20 rounded"
-//         />
-//         <div className="flex flex-col">
-//         <Typography variant="h6">Product Name</Typography>
-//         <Typography variant="body1">Description</Typography>
-//         <Typography variant="subtitle2">Price</Typography>
-//         </div>
-//         </div>
-//         <div className="flex justify-between">
-//         <NumberInput aria-label="Quantity Input" min={1} max={99}
-//          />
-//          <Button variant="outlined" className="bg-transparent text-black rounded-full">Remove from Cart</Button>
-//         </div>
-//       </Card>
-//       <Card className="p-4 flex flex-col gap-3">
-//         <div className="flex gap-3">
-//         <Image
-//           src={"https://dummyimage.com/600x400/000/fff.png"}
-//           alt=""
-//           width="200"
-//           height="300"
-//           className="w-20 rounded"
-//         />
-//         <div className="flex flex-col">
-//         <Typography variant="h6">Product Name</Typography>
-//         <Typography variant="body1">Description</Typography>
-//         <Typography variant="subtitle2">Price</Typography>
-//         </div>
-//         </div>
-//         <div className="flex justify-between">
-//         <NumberInput aria-label="Quantity Input" min={1} max={99}
-//          />
-//          <Button variant="outlined" className="bg-transparent text-black rounded-full">Remove from Cart</Button>
-//         </div>
-//       </Card>
-//       <Card className="p-4 flex flex-col gap-3">
-//         <div className="flex gap-3">
-//         <Image
-//           src={"https://dummyimage.com/600x400/000/fff.png"}
-//           alt=""
-//           width="200"
-//           height="300"
-//           className="w-20 rounded"
-//         />
-//         <div className="flex flex-col">
-//         <Typography variant="h6">Product Name</Typography>
-//         <Typography variant="body1">Description</Typography>
-//         <Typography variant="subtitle2">Price</Typography>
-//         </div>
-//         </div>
-//         <div className="flex justify-between">
-//         <NumberInput aria-label="Quantity Input" min={1} max={99}
-//          />
-//          <Button variant="outlined" className="bg-transparent text-black rounded-full">Remove from Cart</Button>
-//         </div>
-//       </Card>
-      
-
-//       <Container>
-//         <Button>Checkout</Button>
-//       </Container>
-//     </Container>
-//   );
-// }
-
-
-// const blue = {
-//   100: '#daecff',
-//   200: '#b6daff',
-//   300: '#66b2ff',
-//   400: '#3399ff',
-//   500: '#007fff',
-//   600: '#0072e5',
-//   700: '#0059B2',
-//   800: '#004c99',
-// };
-
-// const grey = {
-//   50: '#F3F6F9',
-//   100: '#E5EAF2',
-//   200: '#DAE2ED',
-//   300: '#C7D0DD',
-//   400: '#B0B8C4',
-//   500: '#9DA8B7',
-//   600: '#6B7A90',
-//   700: '#434D5B',
-//   800: '#303740',
-//   900: '#1C2025',
-// };
-
-// const StyledInputRoot = styled('div')(
-//   ({ theme }) => `
-//   font-family: 'IBM Plex Sans', sans-serif;
-//   font-weight: 400;
-//   color: ${theme.palette.mode === 'dark' ? grey[300] : grey[500]};
-//   display: flex;
-//   flex-flow: row nowrap;
-//   justify-content: center;
-//   align-items: center;
-// `,
-// );
-
-// const StyledInput = styled('input')(
-//   ({ theme }) => `
-//   font-size: 0.875rem;
-//   font-family: inherit;
-//   font-weight: 400;
-//   line-height: 1.375;
-//   color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
-//   background: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
-//   border: 1px solid ${theme.palette.mode === 'dark' ? grey[700] : grey[200]};
-//   box-shadow: 0px 2px 4px ${
-//     theme.palette.mode === 'dark' ? 'rgba(0,0,0, 0.5)' : 'rgba(0,0,0, 0.05)'
-//   };
-//   border-radius: 8px;
-//   margin: 0 8px;
-//   padding: 4px 6px;
-//   outline: 0;
-//   min-width: 0;
-//   width: 2rem;
-//   text-align: center;
-
-//   &:hover {
-//     border-color: ${blue[400]};
-//   }
-
-//   &:focus {
-//     border-color: ${blue[400]};
-//     box-shadow: 0 0 0 3px ${theme.palette.mode === 'dark' ? blue[700] : blue[200]};
-//   }
-
-//   &:focus-visible {
-//     outline: 0;
-//   }
-// `,
-// );
-
-// const StyledButton = styled('button')(
-//   ({ theme }) => `
-//   font-family: 'IBM Plex Sans', sans-serif;
-//   font-size: 0.875rem;
-//   box-sizing: border-box;
-//   line-height: 1.5;
-//   border: 1px solid;
-//   border-radius: 999px;
-//   border-color: ${theme.palette.mode === 'dark' ? grey[800] : grey[200]};
-//   background: ${theme.palette.mode === 'dark' ? grey[900] : grey[50]};
-//   color: ${theme.palette.mode === 'dark' ? grey[200] : grey[900]};
-//   width: 28px;
-//   height: 28px;
-//   display: flex;
-//   flex-flow: row nowrap;
-//   justify-content: center;
-//   align-items: center;
-//   transition-property: all;
-//   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-//   transition-duration: 120ms;
-
-//   &:hover {
-//     cursor: pointer;
-//     background: ${theme.palette.mode === 'dark' ? blue[700] : blue[500]};
-//     border-color: ${theme.palette.mode === 'dark' ? blue[500] : blue[400]};
-//     color: ${grey[50]};
-//   }
-
-//   &:focus-visible {
-//     outline: 0;
-//   }
-
-//   &.increment {
-//     order: 1;
-//   }
-// `,
-// );
 
 'use client'
 import { Button, Card, Container, Typography, Box } from "@mui/material";
@@ -274,6 +8,7 @@ import { Unstable_NumberInput as BaseNumberInput } from '@mui/base/Unstable_Numb
 import { styled } from '@mui/system';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
+// import { useRouter } from "next/router";
 
 const NumberInput = React.forwardRef(function CustomNumberInput(props, ref) {
   return (
@@ -305,6 +40,7 @@ const NumberInput = React.forwardRef(function CustomNumberInput(props, ref) {
 
 
 export default function Page() {
+  // const router = useRouter();
   const initialproducts =
 [
   {
@@ -404,11 +140,15 @@ export default function Page() {
       return total + product.currentPrice * product.quantity;
     }, 0);
   };
+  const proceed = () => {
+    // router.push('/checkout');
+    window.location.href = '/checkout';
+  }
   
   return (
     <Container className=" flex flex-col gap-5 lg:w-75 w-78 mt-5 mb-5">
       <div>
-        <Button variant="contained" className="rounded-3xl text-black w-full bg-yellow-300">Proceed to buy</Button>
+        <Button variant="contained" className="rounded-3xl text-black w-full bg-yellow-300" onClick={proceed}>Proceed to buy</Button>
       </div>
       {products.map((product) => (
         <Card key={product.id} className="p-4 flex flex-col gap-3">
