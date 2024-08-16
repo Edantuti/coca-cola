@@ -26,8 +26,8 @@ export default function NavBar({ auth }) {
     setAnchorEl(null);
   };
   return (
-    <AppBar position="static" className="bg-neutral-700">
-      <Toolbar className="flex justify-between gap-4">
+    <AppBar position="static" className="bg-neutral-700" bg={"#404040"}>
+      <Toolbar className="flex justify-between gap-4" bg={"#404040"}>
         <Typography className="text-xl font-cendarville">Wal Cart</Typography>
         {auth ? (
           <div className="flex items-center gap-2">

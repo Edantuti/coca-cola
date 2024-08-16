@@ -1,4 +1,3 @@
-
 import {
   Button,
   Card,
@@ -13,96 +12,85 @@ import {
 import Image from "next/image";
 
 export default function Page() {
-  const initialproducts =
-[
-  {
-    "id": 1,
-    "name": "Men's Classic Denim Jacket",
-    "description": "A timeless denim jacket with a comfortable fit, perfect for casual wear.",
-    "currentPrice": 2999,
-    "originalPrice": 3999,
-    "imageUrl": "https://dummyimage.com/600x400/000/fff.png",
-    "quantity": 1
-  },
-  {
-    "id": 2,
-    "name": "Women's Floral Summer Dress",
-    "description": "A light and breezy summer dress with a vibrant floral print, ideal for warm days.",
-    "currentPrice": 1999,
-    "originalPrice": 2499,
-    "imageUrl": "https://dummyimage.com/600x400/000/fff.png",
-    "quantity": 1
-  },
-  {
-    "id": 3,
-    "name": "Men's Casual Chinos",
-    "description": "Comfortable and stylish chinos, suitable for both casual and semi-formal occasions.",
-    "currentPrice": 1499,
-    "originalPrice": 1999,
-    "imageUrl": "https://dummyimage.com/600x400/000/fff.png",
-    "quantity": 1
-  },
-  {
-    "id": 4,
-    "name": "Women's Cozy Knit Sweater",
-    "description": "A warm and cozy knit sweater, perfect for chilly evenings.",
-    "currentPrice": 1799,
-    "originalPrice": 2299,
-    "imageUrl": "https://dummyimage.com/600x400/000/fff.png",
-    "quantity": 1
-  },
-  {
-    "id": 5,
-    "name": "Men's Athletic Running Shoes",
-    "description": "High-performance running shoes with excellent cushioning and support.",
-    "currentPrice": 3499,
-    "originalPrice": 4499,
-    "imageUrl": "https://dummyimage.com/600x400/000/fff.png",
-    "quantity": 1
-  },
-  {
-    "id": 6,
-    "name": "Women's Lightweight Parka",
-    "description": "A versatile and lightweight parka, perfect for unpredictable weather.",
-    "currentPrice": 3999,
-    "originalPrice": 4999,
-    "imageUrl": "https://dummyimage.com/600x400/000/fff.png",
-    "quantity": 1
-  }
-]
+  const initialproducts = [
+    {
+      id: 1,
+      name: "BIYLACLESEN Women's 3-in-1 Snowboard Jacket Winter Coats",
+      description:
+        "note:the jackets is us standard size, please choose size as your usual wear material: 100% polyester; detachable liner fabric: warm fleece. detachable functional liner: skin friendly, lightweigt and warm.stand collar liner jacket, keep you warm in cold weather. zippered pockets: 2 zippered hand pockets, 2 zippered pockets on chest (enough to keep cards or keys)and 1 hidden pocket inside.zippered hand pockets and hidden pocket keep your things secure. humanized design: adjustable and detachable hood and adjustable cuff to prevent the wind and water,for a comfortable fit. 3 in 1 detachable design provide more convenience, you can separate the coat and inner as needed, or wear it together. it is suitable for different season and help you adapt to different climates",
+      currentPrice: 56.99,
+      originalPrice: 66.99,
+      imageUrl: "https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg",
+      quantity: 3,
+    },
+    {
+      id: 2,
+      name: "Lock and Love Women's Removable Hooded Faux Leather Moto Biker Jacket",
+      description:
+        "100% POLYURETHANE(shell) 100% POLYESTER(lining) 75% POLYESTER 25% COTTON (SWEATER), Faux leather material for style and comfort / 2 pockets of front, 2-For-One Hooded denim style faux leather jacket, Button detail on waist / Detail stitching at sides, HAND WASH ONLY / DO NOT BLEACH / LINE DRY / DO NOT IRON",
+      currentPrice: 29.95,
+      originalPrice: 39.95,
+      imageUrl: "https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_.jpg",
+      quantity: 4,
+    },
+    {
+      id: 3,
+      name: "Rain Jacket Women Windbreaker Striped Climbing Raincoats",
+      description:
+        "Lightweight perfet for trip or casual wear---Long sleeve with hooded, adjustable drawstring waist design. Button and zipper front closure raincoat, fully stripes Lined and The Raincoat has 2 side pockets are a good size to hold all kinds of things, it covers the hips, and the hood is generous but doesn't overdo it.Attached Cotton Lined Hood with Adjustable Drawstrings give it a real styled look.",
+      currentPrice: 39.99,
+      originalPrice: 49.99,
+      imageUrl: "https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2.jpg",
+      quantity: 5,
+    },
+  ];
   // const [products, setProducts] = useState(initialproducts);
   return (
     <Container className="flex flex-col gap-5 mt-5 mb-5">
-      <Button variant="contained" className="rounded-3xl text-black w-full bg-yellow-300">Place your Order</Button>
+      <Button
+        variant="contained"
+        className="rounded-3xl text-black w-full bg-yellow-300"
+      >
+        Place your Order
+      </Button>
       <Card className="p-4">
-      <FormControl>
-        <FormLabel>Type of Delivery</FormLabel>
-        <RadioGroup
-          aria-labelledby="demo-radio-buttons-group-label"
-          defaultValue="takeaway"
-          name="radio-buttons-group"
-        >
-          <FormControlLabel
-            value="takeaway"
-            control={<Radio />}
-            label="TakeAway"
-          />
-          <FormControlLabel
-            value="delivery"
-            control={<Radio />}
-            label="Home Delivery"
-          />
-        </RadioGroup>
-      </FormControl>
+        <FormControl>
+          <FormLabel>Type of Delivery</FormLabel>
+          <RadioGroup
+            aria-labelledby="demo-radio-buttons-group-label"
+            defaultValue="takeaway"
+            name="radio-buttons-group"
+          >
+            <FormControlLabel
+              value="takeaway"
+              control={<Radio />}
+              label="TakeAway"
+            />
+            <FormControlLabel
+              value="delivery"
+              control={<Radio />}
+              label="Home Delivery"
+            />
+          </RadioGroup>
+        </FormControl>
       </Card>
       <Card className="p-4">
-      <Typography variant="h6" className="mb-5">Place your Order</Typography>
-        <Typography variant="subtitle2" className="flex justify-between"><div>Total Price:</div> <div>₹500</div></Typography>
-        <Typography variant="subtitle2" className="flex justify-between"><div>Total Discount:</div><div>-₹200</div></Typography>
-        <Typography variant="h6" className="flex justify-between"><div>Overall Price:</div><div>₹300</div> </Typography>
+        <Typography variant="h6" className="mb-5">
+          Place your Order
+        </Typography>
+        <Typography variant="subtitle2" className="flex justify-between">
+          <div>Total Price:</div> <div>₹500</div>
+        </Typography>
+        <Typography variant="subtitle2" className="flex justify-between">
+          <div>Total Discount:</div>
+          <div>-₹200</div>
+        </Typography>
+        <Typography variant="h6" className="flex justify-between">
+          <div>Overall Price:</div>
+          <div>₹300</div>{" "}
+        </Typography>
       </Card>
-      
-     
+
       {/* <Button variant="contained" className="w-fit">
         Pay Now
       </Button> */}
@@ -129,22 +117,31 @@ export default function Page() {
               className="w-[40%] h-[20vh] rounded"
             />
             <div className="flex flex-col">
-              <Typography variant="h6">{product.name}</Typography>
-              <Typography variant="body1">{product.description}</Typography>
+              <Typography variant="h6" className="line-clamp-1">
+                {product.name}
+              </Typography>
+
+              <Typography variant="body1" className="line-clamp-2">
+                {product.description}
+              </Typography>
               <div className="flex items-center gap-2">
-                <Typography variant="subtitle2" className="line-through text-gray-500">
-                  ₹{product.originalPrice}
+                <Typography
+                  variant="subtitle2"
+                  className="line-through text-gray-500"
+                >
+                  {/*₹ */}${product.originalPrice}
                 </Typography>
-                <Typography variant="subtitle2" className="font-bold text-black">
-                  ₹{product.currentPrice}
+                <Typography
+                  variant="subtitle2"
+                  className="font-bold text-black"
+                >
+                  ${product.currentPrice}
                 </Typography>
               </div>
             </div>
           </div>
         </Card>
       ))}
-      
-      
     </Container>
   );
 }

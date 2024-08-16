@@ -7,6 +7,8 @@ import { Unstable_NumberInput as BaseNumberInput } from "@mui/base/Unstable_Numb
 import { styled } from "@mui/system";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
+import { redirect } from "next/navigation";
+import Link from "next/link";
 // import { useRouter } from "next/router";
 
 const NumberInput = React.forwardRef(function CustomNumberInput(props, ref) {
@@ -41,62 +43,33 @@ export default function Page() {
   const initialproducts = [
     {
       id: 1,
-      name: "Men's Classic Denim Jacket",
+      name: "BIYLACLESEN Women's 3-in-1 Snowboard Jacket Winter Coats",
       description:
-        "A timeless denim jacket with a comfortable fit, perfect for casual wear.",
-      currentPrice: 2999,
-      originalPrice: 3999,
-      imageUrl: "https://dummyimage.com/600x400/000/fff.png",
-      quantity: 1,
+        "note:the jackets is us standard size, please choose size as your usual wear material: 100% polyester; detachable liner fabric: warm fleece. detachable functional liner: skin friendly, lightweigt and warm.stand collar liner jacket, keep you warm in cold weather. zippered pockets: 2 zippered hand pockets, 2 zippered pockets on chest (enough to keep cards or keys)and 1 hidden pocket inside.zippered hand pockets and hidden pocket keep your things secure. humanized design: adjustable and detachable hood and adjustable cuff to prevent the wind and water,for a comfortable fit. 3 in 1 detachable design provide more convenience, you can separate the coat and inner as needed, or wear it together. it is suitable for different season and help you adapt to different climates",
+      currentPrice: 56.99,
+      originalPrice: 66.99,
+      imageUrl: "https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg",
+      quantity: 4,
     },
     {
       id: 2,
-      name: "Women's Floral Summer Dress",
+      name: "Lock and Love Women's Removable Hooded Faux Leather Moto Biker Jacket",
       description:
-        "A light and breezy summer dress with a vibrant floral print, ideal for warm days.",
-      currentPrice: 1999,
-      originalPrice: 2499,
-      imageUrl: "https://dummyimage.com/600x400/000/fff.png",
-      quantity: 1,
+        "100% POLYURETHANE(shell) 100% POLYESTER(lining) 75% POLYESTER 25% COTTON (SWEATER), Faux leather material for style and comfort / 2 pockets of front, 2-For-One Hooded denim style faux leather jacket, Button detail on waist / Detail stitching at sides, HAND WASH ONLY / DO NOT BLEACH / LINE DRY / DO NOT IRON",
+      currentPrice: 29.95,
+      originalPrice: 39.95,
+      imageUrl: "https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_.jpg",
+      quantity: 5,
     },
     {
       id: 3,
-      name: "Men's Casual Chinos",
+      name: "Rain Jacket Women Windbreaker Striped Climbing Raincoats",
       description:
-        "Comfortable and stylish chinos, suitable for both casual and semi-formal occasions.",
-      currentPrice: 1499,
-      originalPrice: 1999,
-      imageUrl: "https://dummyimage.com/600x400/000/fff.png",
-      quantity: 1,
-    },
-    {
-      id: 4,
-      name: "Women's Cozy Knit Sweater",
-      description: "A warm and cozy knit sweater, perfect for chilly evenings.",
-      currentPrice: 1799,
-      originalPrice: 2299,
-      imageUrl: "https://dummyimage.com/600x400/000/fff.png",
-      quantity: 1,
-    },
-    {
-      id: 5,
-      name: "Men's Athletic Running Shoes",
-      description:
-        "High-performance running shoes with excellent cushioning and support.",
-      currentPrice: 3499,
-      originalPrice: 4499,
-      imageUrl: "https://dummyimage.com/600x400/000/fff.png",
-      quantity: 1,
-    },
-    {
-      id: 6,
-      name: "Women's Lightweight Parka",
-      description:
-        "A versatile and lightweight parka, perfect for unpredictable weather.",
-      currentPrice: 3999,
-      originalPrice: 4999,
-      imageUrl: "https://dummyimage.com/600x400/000/fff.png",
-      quantity: 1,
+        "Lightweight perfet for trip or casual wear---Long sleeve with hooded, adjustable drawstring waist design. Button and zipper front closure raincoat, fully stripes Lined and The Raincoat has 2 side pockets are a good size to hold all kinds of things, it covers the hips, and the hood is generous but doesn't overdo it.Attached Cotton Lined Hood with Adjustable Drawstrings give it a real styled look.",
+      currentPrice: 39.99,
+      originalPrice: 49.99,
+      imageUrl: "https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2.jpg",
+      quantity: 6,
     },
   ];
   const [products, setProducts] = useState(initialproducts);
@@ -139,23 +112,20 @@ export default function Page() {
   const calculateTotalPrice = () => {
     return products.reduce((total, product) => {
       return total + product.currentPrice * product.quantity;
-    }, 0);
-  };
-  const proceed = () => {
-    // router.push('/checkout');
-    redirect("/checkout");
+    }, 0.0);
   };
 
   return (
     <Container className=" flex flex-col gap-5 lg:w-75 w-78 mt-5 mb-5">
       <div>
-        <Button
-          variant="contained"
-          className="rounded-3xl text-black w-full bg-yellow-300"
-          onClick={proceed}
-        >
-          Proceed to buy
-        </Button>
+        <Link href="/checkout">
+          <Button
+            variant="contained"
+            className="rounded-3xl text-black w-full bg-yellow-300"
+          >
+            Proceed to buy
+          </Button>
+        </Link>
       </div>
       {products.map((product) => (
         <Card key={product.id} className="p-4 flex flex-col gap-3">
@@ -168,20 +138,24 @@ export default function Page() {
               className="w-[40%] h-[20vh] rounded"
             />
             <div className="flex flex-col">
-              <Typography variant="h6">{product.name}</Typography>
-              <Typography variant="body1">{product.description}</Typography>
+              <Typography variant="h6" className="line-clamp-1">
+                {product.name}
+              </Typography>
+              <Typography variant="body1" className="line-clamp-2">
+                {product.description}
+              </Typography>
               <div className="flex items-center gap-2">
                 <Typography
                   variant="subtitle2"
                   className="line-through text-gray-500"
                 >
-                  ₹{product.originalPrice}
+                  {/*₹ */}${product.originalPrice}
                 </Typography>
                 <Typography
                   variant="subtitle2"
                   className="font-bold text-black"
                 >
-                  ₹{product.currentPrice}
+                  ${product.currentPrice}
                 </Typography>
               </div>
             </div>
@@ -214,7 +188,7 @@ export default function Page() {
       <Container>
         <Box sx={{ marginTop: "24px", textAlign: "left" }}>
           <Typography variant="h6">
-            Total Price: ₹{calculateTotalPrice()}
+            Total Price: ${calculateTotalPrice()}
           </Typography>
         </Box>
 

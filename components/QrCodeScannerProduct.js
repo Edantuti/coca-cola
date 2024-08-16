@@ -31,7 +31,7 @@ export function QrCodeScannerProduct() {
     };
   }, []);
   useEffect(() => {
-    if (scanResult) redirect(`/product/${scanResult}`);
+    if (scanResult) redirect(`/products/${scanResult}`);
   }, [scanResult]);
   return (
     <div>

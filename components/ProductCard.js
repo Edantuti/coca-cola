@@ -7,23 +7,19 @@ import {
   Rating,
   Typography,
 } from "@mui/material";
+import Image from "next/image";
 import Link from "next/link";
 
-export default function ProductCard({
-  id,
-  name,
-  type,
-  category,
-  image,
-  price,
-}) {
+export default function ProductCard({ id, name, originalPrice, image, price }) {
   return (
     <Link href={`/product/${id}`}>
       <Card className="md:w-96 w-fit rounded-none border border-px">
-        <CardMedia
-          component={"img"}
-          image={image || "https://dummyimage.com/600x600/000/fff.png"}
-          title={name}
+        <Image
+          src={image || "https://dummyimage.com/600x600/000/fff.png"}
+          alt={name}
+          width="600"
+          height="600"
+          className="aspect-square"
         />
         <CardContent>
           <Typography
@@ -34,16 +30,16 @@ export default function ProductCard({
             {name}
           </Typography>
           <Typography variant="h5" component="div" className="flex gap-2">
-            <Typography component="span" className="text-green-600">
-              76% off
+            <Typography component="span" className="text-green-600 text-sm">
+              {Math.floor(((originalPrice - price) / originalPrice) * 100)}% off
             </Typography>
             <Typography
               component="span"
-              className="line-through text-slate-400"
+              className="line-through text-slate-400 text-sm"
             >
-              199
+              {originalPrice}
             </Typography>
-            <Typography component="span" className="">
+            <Typography component="span" className=" text-sm">
               ${price}
             </Typography>
           </Typography>
