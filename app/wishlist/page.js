@@ -2,18 +2,14 @@ import ProductCard from "@/components/ProductCard";
 import { QrCodeScannerProduct } from "@/components/QrCodeScannerProduct";
 
 export default async function Page({ params }) {
-  if (params.category === "qrcode") {
-    return (
-      <section className="flex flex-col items-center justify-center w-full">
-        <QrCodeScannerProduct />
-      </section>
-    );
-  }
   return (
     <section className="grid grid-cols-2">
       <ProductCard
         id="product"
-        name="product"
+        name="
+        Noise Colorfit Icon 2 1.8 Display with Bluetooth Calling, AI Voice
+        Assistant Smartwatch
+"
         type="product"
         category="product"
         image=""
@@ -21,7 +17,10 @@ export default async function Page({ params }) {
       />
       <ProductCard
         id="product"
-        name="product"
+        name="
+        Noise Colorfit Icon 2 1.8 Display with Bluetooth Calling, AI Voice
+        Assistant Smartwatch
+"
         type="product"
         category="product"
         image=""
@@ -29,7 +28,10 @@ export default async function Page({ params }) {
       />
       <ProductCard
         id="product"
-        name="product"
+        name="
+        Noise Colorfit Icon 2 1.8 Display with Bluetooth Calling, AI Voice
+        Assistant Smartwatch
+"
         type="product"
         category="product"
         image=""
@@ -37,7 +39,10 @@ export default async function Page({ params }) {
       />
       <ProductCard
         id="product"
-        name="product"
+        name="
+        Noise Colorfit Icon 2 1.8 Display with Bluetooth Calling, AI Voice
+        Assistant Smartwatch
+"
         type="product"
         category="product"
         image=""
@@ -45,7 +50,10 @@ export default async function Page({ params }) {
       />
       <ProductCard
         id="product"
-        name="product"
+        name="
+        Noise Colorfit Icon 2 1.8 Display with Bluetooth Calling, AI Voice
+        Assistant Smartwatch
+"
         type="product"
         category="product"
         image=""

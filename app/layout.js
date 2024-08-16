@@ -17,8 +17,10 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NavBar auth={session !== null} />
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider session={session}>
+          <NavBar auth={session !== null} />
+          {children}
+        </AuthProvider>
         <Toaster position="top-left" />
       </body>
     </html>

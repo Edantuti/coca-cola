@@ -14,7 +14,7 @@ export default function Login() {
         <Button
           variant="contained"
           className="w-80 mx-auto flex gap-2"
-          onClick={() => signIn("google")}
+          onClick={() => signIn("google", { callbackUrl: "/" })}
         >
           <GoogleIcon />
           Google

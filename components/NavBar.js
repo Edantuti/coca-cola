@@ -1,11 +1,21 @@
 "use client";
-import { signOut } from "next-auth/react";
-import { AccountCircle, ShoppingCart } from "@mui/icons-material";
-import { AppBar, IconButton, Menu, MenuItem, Toolbar } from "@mui/material";
+import { signOut, useSession } from "next-auth/react";
+import { FaCartShopping, FaOpencart } from "react-icons/fa6";
+// import { AccountCircle, ShoppingCart } from "@mui/icons-material";
+
+import {
+  AppBar,
+  Avatar,
+  Menu,
+  MenuItem,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import Link from "next/link";
 import { useState } from "react";
 
 export default function NavBar({ auth }) {
+  const { data } = useSession();
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleMenu = (event) => {
@@ -16,19 +26,21 @@ export default function NavBar({ auth }) {
     setAnchorEl(null);
   };
   return (
-    <AppBar position="static">
-      <Toolbar className="flex justify-between">
-        <h6 className="text-xl">Wal Cart</h6>
+    <AppBar position="static" className="bg-neutral-700">
+      <Toolbar className="flex justify-between gap-4">
+        <Typography className="text-xl font-cendarville">Wal Cart</Typography>
         {auth ? (
-          <div>
-            <Link href="/cart">
-              <IconButton size="large">
-                <ShoppingCart />
-              </IconButton>
+          <div className="flex items-center gap-2">
+            <Link href="/">Home</Link>
+            <Link href="/cart" className="flex gap-2">
+              <FaCartShopping className="fill-white size-6" />
             </Link>
-            <IconButton size="large" onClick={handleMenu}>
-              <AccountCircle />
-            </IconButton>
+
+            <Avatar
+              src={data.user?.image || ""}
+              alt="Profile"
+              onClick={handleMenu}
+            />
             <Menu
               anchorEl={anchorEl}
               keepMounted
@@ -53,7 +65,7 @@ export default function NavBar({ auth }) {
           </div>
         ) : (
           <div>
-            <Link href="/login" className="bg-blue-800 rounded py-2 px-4">
+            <Link href="/login" className="bg-slate-950 rounded py-2 px-4">
               Login
             </Link>
           </div>
