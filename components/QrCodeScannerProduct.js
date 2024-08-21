@@ -35,10 +35,10 @@ export function QrCodeScannerProduct() {
   }, [scanResult]);
   return (
     <div>
-      <h2>Qr Scanning Code</h2>
-      <div>
+      <div className="flex flex-col">
         <div id="reader"></div>
-        <p>Scan the qr code</p>
+        <p className="text-xl font-medium rounded text-center p-5 border m-2 shadow">Scan the QR code for product section</p>
+        <Link href="/product" className="py-5 px-10 shadow w-fit mx-auto">Select Particular Product</Link>
       </div>
     </div>
   );

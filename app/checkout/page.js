@@ -1,3 +1,4 @@
+import { OrderPlaced } from "@/components/OrderPlaced";
 import {
   Button,
   Card,
@@ -47,12 +48,7 @@ export default function Page() {
   // const [products, setProducts] = useState(initialproducts);
   return (
     <Container className="flex flex-col gap-5 mt-5 mb-5">
-      <Button
-        variant="contained"
-        className="rounded-3xl text-black w-full bg-yellow-300"
-      >
-        Place your Order
-      </Button>
+      <OrderPlaced />
       <Card className="p-4">
         <FormControl>
           <FormLabel>Type of Delivery</FormLabel>
@@ -79,15 +75,15 @@ export default function Page() {
           Place your Order
         </Typography>
         <Typography variant="subtitle2" className="flex justify-between">
-          <div>Total Price:</div> <div>₹500</div>
+          <div>Total Price:</div> <div>$156.93</div>
         </Typography>
         <Typography variant="subtitle2" className="flex justify-between">
           <div>Total Discount:</div>
-          <div>-₹200</div>
+          <div>-$30</div>
         </Typography>
         <Typography variant="h6" className="flex justify-between">
           <div>Overall Price:</div>
-          <div>₹300</div>{" "}
+          <div>$126.93</div>{" "}
         </Typography>
       </Card>
 

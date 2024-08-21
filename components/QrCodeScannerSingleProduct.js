@@ -4,7 +4,7 @@ import { Html5QrcodeScanner } from "html5-qrcode";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-export function QrCodeScannerMap() {
+export function QrCodeScannerSingleProduct() {
   const [scanResult, setScanResult] = useState(null);
   useEffect(() => {
     const scanner = new Html5QrcodeScanner("reader", {
@@ -26,16 +26,18 @@ export function QrCodeScannerMap() {
     function error(result) {
       console.warn(result);
     }
+    return () => {
+      scanner.clear();
+    };
   }, []);
   useEffect(() => {
-    if (scanResult) redirect(`/map/${scanResult}`);
+    if (scanResult) redirect(`/product/${scanResult}`);
   }, [scanResult]);
   return (
     <div>
-
       <div>
         <div id="reader"></div>
-        <p className="text-xl font-medium rounded text-center p-5 border m-2 shadow">Scan the QR code for your current location</p>
+        <p className="text-xl font-medium rounded text-center p-5 border m-2 shadow">Scan the QR code for product section</p>
       </div>
     </div>
   );

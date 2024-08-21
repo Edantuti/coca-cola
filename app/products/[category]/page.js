@@ -73,7 +73,10 @@ export default async function Page({ params }) {
     );
   }
   return (
+    <>
+    <h1 className="text-2xl text-center py-10">Women{"'"}s Clothes</h1>
     <section className="grid grid-cols-2">
+      
       {Products.map((data) => (
         <ProductCard
           key={data.id}
@@ -86,5 +89,6 @@ export default async function Page({ params }) {
         />
       ))}
     </section>
+    </>
   );
 }
