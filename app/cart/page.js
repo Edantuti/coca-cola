@@ -49,7 +49,7 @@ export default function Page() {
       currentPrice: 56.99,
       originalPrice: 66.99,
       imageUrl: "https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg",
-      quantity: 4,
+      quantity: 1,
     },
     {
       id: 2,
@@ -59,7 +59,7 @@ export default function Page() {
       currentPrice: 29.95,
       originalPrice: 39.95,
       imageUrl: "https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_.jpg",
-      quantity: 5,
+      quantity: 1,
     },
     {
       id: 3,
@@ -69,7 +69,7 @@ export default function Page() {
       currentPrice: 39.99,
       originalPrice: 49.99,
       imageUrl: "https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2.jpg",
-      quantity: 6,
+      quantity: 1,
     },
   ];
   const [products, setProducts] = useState(initialproducts);
@@ -199,12 +199,13 @@ export default function Page() {
             justifyContent: "space-between",
           }}
         >
-          <Button
+          <Link href="/checkout" className="rounded-3xl text-black w-[60%] bg-yellow-300"><Button
             variant="contained"
-            className="rounded-3xl text-black w-[60%] bg-yellow-300"
+            className="rounded-3xl text-black w-full bg-yellow-300"
+            
           >
             Proceed to buy
-          </Button>
+          </Button></Link>
           <Button variant="contained" className="rounded-3xl">
             Checkout
           </Button>
